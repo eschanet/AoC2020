@@ -22,10 +22,12 @@ def test_parse():
 # PART 1
 def test_solve1():
     solution = solve1(data)
+    assert solve1([1, 2, 3, 4, 5, 6, 7]) == 1
     assert solution == 514579
 
 
 # PART 2
 def test_solve2():
     solution = solve2(data)
+    assert solve1([1, 2, 3, 4, 5, 6, 7]) == 1
     assert solution == 241861950

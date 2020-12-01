@@ -38,12 +38,9 @@ def solve2(data):
 
 @measure_time
 def solve_n(data, n):
-    combs = list(combinations(data, n))
-    for comb in combs:
-        if np.sum(comb) == 2020:
-            return np.product(comb)
-    else:
-        return False
+    combs = np.array(list(combinations(data, n)))
+    match = combs[np.sum(combs, axis=1) == 2020]
+    return np.product(match)
 
 
 if __name__ == "__main__":
