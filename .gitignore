@@ -3,4 +3,5 @@
 *.cache
 *.pyc
 *.swp
+*.vscode
 aoc_session.sh
