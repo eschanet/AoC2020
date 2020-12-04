@@ -58,7 +58,7 @@ def valid_passport(
     if "byr" in needed_keys:
         # define some rules for birth year
         if not (
-            re.match(r"(?<!.)\d{4}(?!.)", passport["byr"])
+            re.match(r"^\d{4}$", passport["byr"])
             and int(passport["byr"]) >= 1920
             and int(passport["byr"]) <= 2002
         ):
@@ -67,7 +67,7 @@ def valid_passport(
     if "iyr" in needed_keys:
         # define some rules for issue year
         if not (
-            re.match(r"(?<!.)\d{4}(?!.)", passport["iyr"])
+            re.match(r"^\d{4}$", passport["iyr"])
             and int(passport["iyr"]) >= 2010
             and int(passport["iyr"]) <= 2020
         ):
@@ -76,7 +76,7 @@ def valid_passport(
     if "eyr" in needed_keys:
         # define some rules for expiry year
         if not (
-            re.match(r"(?<!.)\d{4}(?!.)", passport["eyr"])
+            re.match(r"^\d{4}$", passport["eyr"])
             and int(passport["eyr"]) >= 2020
             and int(passport["eyr"]) <= 2030
         ):
@@ -102,12 +102,12 @@ def valid_passport(
 
     if "pid" in needed_keys:
         # define some rules for passport id
-        if not re.match(r"(?<!.)\d{9}(?!.)", passport["pid"]):
+        if not re.match(r"^\d{9}$", passport["pid"]):
             return False
 
     if "hcl" in needed_keys:
         # define some rules for hair colour
-        if not re.match(r"(?<!.)#[a-f0-9]{6}(?!.)", passport["hcl"]):
+        if not re.match(r"^#[a-f0-9]{6}$", passport["hcl"]):
             return False
 
     # no rules flagged it as invalid, so must be valid
