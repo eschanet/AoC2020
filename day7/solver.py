@@ -53,10 +53,8 @@ def solve1(data):
         q = deque([color])  # never used double-ended queue before ...
         while q:
             u = q.popleft()
-            print(u, gr[u])
             for v in gr[u]:
                 if not v in color_contd:
-                    print(v)
                     color_contd.add(v)
                     q.append(v)
         return color_contd
