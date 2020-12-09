@@ -62,5 +62,5 @@ def test_solve1():
 
 # PART 2
 def test_solve2():
-    solution = solve2(data, solve1(data, 5))
+    solution = solve2(data, 127)
     assert solution == 62

@@ -37,10 +37,28 @@ def solve1(data, preamble_length=25):
 # PART 2
 @measure_time
 def solve2(data, result_solve1):
-    idxs = list(range(len(data)))
-    for start, end in combinations(idxs, 2):
-        if sum(data[start : end + 1]) == result_solve1:
-            return min(data[start : end + 1]) + max(data[start : end + 1])
+
+    # partial sums, should be O(n)
+    cusums = [0]
+    a, b = 0, 0
+    while True:
+        partial_sum = cusums[b] - cusums[a]
+        if partial_sum > result_solve1:
+            a += 1
+        elif partial_sum < result_solve1:
+            cusums.append(cusums[-1] + data[b])
+            b += 1
+        else:
+            break
+
+    seq = data[a:b]
+    return min(seq) + max(seq)
+
+    # keep my initial solution for reference
+    # idxs = list(range(len(data)))
+    # for start, end in combinations(idxs, 2):
+    #     if sum(data[start : end + 1]) == result_solve1:
+    #         return min(data[start : end + 1]) + max(data[start : end + 1])
 
 
 if __name__ == "__main__":
